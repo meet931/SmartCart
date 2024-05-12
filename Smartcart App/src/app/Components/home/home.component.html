@@ -1,0 +1,124 @@
+<div class="container my-5 d-flex flex-column align-items-center">
+  <!-- home intro section start  -->
+  <div class="bannerContainer mb-5">
+    <div class="d-flex flex-row justify-content-evenly h-100">
+      <div
+        class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start"
+      >
+        <h1 style="color: white">Providing Healty Super Organic Produce</h1>
+        <p style="color: white">From reserved farms around the world</p>
+        <div class="d-flex">
+          <button
+            class="btn shopNow"
+            style="color: white"
+            (click)="scrollToElement('featuredProducts')"
+          >
+            Shop Now
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+        <img src="../../../assets/images/homeBanner.png" class="" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <!-- home intro section end  -->
+  <div
+    class="d-flex flex-column align-items-center mb-4 mt-5"
+    id="featuredProducts"
+  >
+    <h2 style="color: #60ad56" class="fw-bold">Featured Products</h2>
+  </div>
+  <div class="w-100 px-5 mb-3">
+    <form class="d-flex flex-row justify-content-between w-100">
+      <select class="form-select w-25" (change)="handleChange($event)">
+        <option selected value="0">Shop by Category</option>
+
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.attributes.category_name }}
+        </option>
+      </select>
+      <input
+        class="form-control me-2 w-25"
+        type="search"
+        placeholder="Search Product"
+        value=""
+        id="searchbar"
+        (input)="handleSearch($event)"
+      />
+    </form>
+  </div>
+  <div
+    class="product-container d-flex flex-row justify-content-center flex-wrap"
+  >
+    <!-- display this when user search and product not found -->
+    <div class="container-fluid mt-100 mb-5" *ngIf="productsData.length === 0">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card border-0">
+            <div class="card-body cart">
+              <div class="col-sm-12 empty-cart-cls text-center">
+                <img
+                  src="https://cdni.iconscout.com/illustration/premium/thumb/sorry-item-not-found-3328225-2809510.png?f=webp"
+                  width="130"
+                  height="130"
+                  class="img-fluid mb-4 mr-3 notFoundImg"
+                />
+                <h3><strong>No Products Found</strong></h3>
+                <h4>Your search did not match any product</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card m-2 d-flex"
+      style="width: 18rem"
+      *ngFor="let product of productsData; let i = index"
+    >
+      <img
+        src="http://localhost:1337{{
+          product.attributes.product_image.data[0].attributes.url
+        }}"
+        class="p-3"
+        alt="{{ product.attributes.product_name }}"
+        (click)="viewProductDetails(product.id)"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.attributes.product_name }}</h5>
+        <p class="card-text">{{ product.attributes.price }} &#8377;</p>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-primary" (click)="addTocard(product.id, i)">
+            Add to cart
+            <span
+              class="spinner-border"
+              role="status"
+              *ngIf="isloading[i]"
+            ></span>
+          </button>
+
+          <button class="btn" (click)="addToWishlist(product.id, i)">
+            <i class="bi bi-heart mx-1" *ngIf="!iswishlistloading[i]"></i>
+            <span
+              class="spinner-border"
+              style="color: white"
+              role="status"
+              *ngIf="iswishlistloading[i]"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- reder product dynamically end-->
+
+  <!-- pagination -->
+
+  <ul class="pagination mt-5" *ngIf="showPagination">
+    <li class="page-item" *ngFor="let page of pageCountArray()">
+      <a class="page-link" (click)="getProducts(page)">{{ page }}</a>
+    </li>
+  </ul>
+</div>

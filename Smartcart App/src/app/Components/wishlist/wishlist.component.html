@@ -1,0 +1,100 @@
+<div class="cart-wrap">
+  <h1
+    class="mb-5 text-center"
+    style="color: #60ad56"
+    *ngIf="wishlistProduct.length > 0"
+  >
+    My Wishlist
+  </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div
+          class="table-wishlist d-flex align-items-center justify-content-center"
+        >
+          <!-- display when wishlist is empty -->
+          <div
+            class="container-fluid mt-100"
+            *ngIf="wishlistProduct.length === 0"
+          >
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card border-0">
+                  <div class="card-body cart">
+                    <div class="col-sm-12 empty-cart-cls text-center">
+                      <img
+                        src="../../../assets/images/wishlistEmpty.png"
+                        alt="wishlistEmpty"
+                        class="img-fluid mb-4 mr-3 wishlistImg"
+                      />
+                      <h3><strong>Your Wishlist is Empty</strong></h3>
+                      <h4>Add Product To Wishlist</h4>
+                      <a
+                        routerLink="/home"
+                        class="btn btn-primary cart-btn-transform m-3"
+                        data-abc="true"
+                        >Add Product</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- display when wishlist is not empty -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            class="border"
+            *ngIf="wishlistProduct.length > 0"
+          >
+            <thead>
+              <tr>
+                <th width="30%">Product Name</th>
+                <th width="15%">Unit Price</th>
+                <th width="15%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of wishlistProduct">
+                <td width="45%">
+                  <div class="display-flex align-center">
+                    <!-- <div class="img-product">
+                      <img
+                        src="{{ item.images }}"
+                        alt="{{ item.name }}"
+                        class="mCS_img_loaded"
+                      />
+                    </div> -->
+                    <a
+                      class="name-product"
+                      [routerLink]="
+                        '/product-detail/' + item.attributes.product.data.id
+                      "
+                    >
+                      {{ item.attributes.product.data.attributes.product_name }}
+                    </a>
+                  </div>
+                </td>
+                <td width="15%" class="price text-center">
+                  {{ item.attributes.product.data.attributes.price }} &#8377;
+                </td>
+
+                <td width="10%" class="text-center">
+                  <button
+                    class="trash-icon border-0 rounded-1 p-2"
+                    (click)="RemoveWishlistItem(item.id)"
+                  >
+                    Remove
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

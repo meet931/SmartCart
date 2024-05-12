@@ -1,0 +1,114 @@
+<!-- Section: Design Block -->
+<section class="signup text-center text-lg-start">
+  <div class="card mb-3 innercontainer">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <img
+          src="../../../assets/images/smartcart.jpg"
+          alt="smartcartlogo"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
+        />
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
+          <h3 class="mb-5 text-center" style="color: #60ad56">
+            Welcome to Smartcart
+          </h3>
+          <form [formGroup]="signUpForm" (ngSubmit)="handleSignUpForm()">
+            <!-- Name input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="name">Username</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                formControlName="username"
+                [ngClass]="
+                  name && name.invalid && name.dirty ? 'border-danger' : ''
+                "
+              />
+              <span
+                *ngIf="name && name.invalid && name.dirty"
+                style="color: red"
+              >
+                Username is Required
+              </span>
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="email">Email address</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                [ngClass]="
+                  email && email.invalid && email.dirty ? 'border-danger' : ''
+                "
+              />
+              <span
+                *ngIf="email && email.invalid && email.dirty"
+                style="color: red"
+              >
+                Please Enter Valid Email
+              </span>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                [ngClass]="
+                  password && password.invalid && password.dirty
+                    ? 'border-danger'
+                    : ''
+                "
+              />
+              <span
+                *ngIf="password && password.invalid && password.dirty"
+                style="color: red"
+              >
+                Password must be more then 6 character
+              </span>
+            </div>
+
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+              <div class="col d-flex justify-content-center">
+                <label class="form-check-label" for="form2Example31">
+                  Already have an account?
+                </label>
+              </div>
+
+              <div class="col">
+                <!-- Simple link -->
+                <a routerLink="/"> login Here </a>
+              </div>
+
+              <div class="col"></div>
+            </div>
+
+            <!-- Submit button -->
+            <button
+              [disabled]="signUpForm.invalid"
+              type="submit"
+              class="btn btn-primary btn-block mb-4"
+            >
+              Register
+              <span
+                class="spinner-border"
+                role="status"
+                *ngIf="isloading"
+              ></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

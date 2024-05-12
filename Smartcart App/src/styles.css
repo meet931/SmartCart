@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.btn {
+  background-color: #60ad56 !important;
+  border: none !important;
+  border-radius: 2px !important;
+}
+a {
+  text-decoration: none !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border-color: #60ad56;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+select:focus {
+  box-shadow: none !important;
+  border-color: #60ad56;
+}
+.spinner-border {
+  --bs-spinner-width: 1rem !important;
+  --bs-spinner-height: 1rem !important;
+  --bs-spinner-border-width: 0.1rem !important;
+}

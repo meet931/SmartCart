@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+}
+.test {
+  height: 9vh;
+  /* background-color: rgb(172, 172, 172); */
+  width: 86vw;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+#searchbar {
+  width: 30vw;
+}
+i {
+  font-size: 1.4rem;
+}
+.searchbtn {
+  border-radius: 5px;
+  border: none;
+}
+a:hover {
+  cursor: pointer;
+}
+.badge {
+  font-size: 11px;
+}
+.active-nav-item {
+  border-bottom: 2px solid #60ad56;
+}

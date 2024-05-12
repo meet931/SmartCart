@@ -1,0 +1,175 @@
+<div class="container mt-5 mb-5">
+  <h1 class="mb-5 text-center" style="color: #60ad56">Order Details</h1>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="invoice p-4">
+          <h5>Your order Confirmed!</h5>
+          <div
+            class="payment border-top mt-3 mb-3 border-bottom table-responsive"
+          >
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Order Date</span>
+                      <span>
+                        {{
+                          formatDate(orderDetails?.attributes?.order_date)
+                        }}</span
+                      >
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Order No</span>
+                      <span>{{ orderDetails?.attributes?.order_id }}</span>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Payment</span>
+                      <span>COD</span>
+                    </div>
+                  </td>
+
+                  <!-- <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Shiping Address</span>
+                      <span>414 Advert Avenue, NY,USA</span>
+                    </div>
+                  </td> -->
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Order Status</span>
+                      <span>{{ orderDetails?.attributes?.order_status }}</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product border-bottom table-responsive">
+            <table class="table table-borderless">
+              <tbody>
+                <tr *ngFor="let item of orderDetails?.attributes?.order_items">
+                  <td width="50%">
+                    <span class="fw-bold">{{
+                      item?.attributes?.product?.data?.attributes?.product_name
+                    }}</span>
+                  </td>
+                  <td width="25% ">
+                    <div class="product-qty text-end">
+                      <span>Quantity: {{ item?.attributes?.quantity }}</span>
+                    </div>
+                  </td>
+                  <td width="25%">
+                    <div class="text-end">
+                      <span class="fw-bold">
+                        {{ item?.attributes?.product?.data.attributes?.price }}
+                        &#8377;</span
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row d-flex justify-content-end">
+            <div class="col-md-5">
+              <table class="table table-borderless">
+                <tbody class="totals">
+                  <tr>
+                    <td>
+                      <div class="text-left">
+                        <span class="text-muted">Subtotal</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-end">
+                        <span
+                          >{{
+                            orderDetails?.attributes?.total_amount
+                          }}
+                          &#8377;</span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="text-left">
+                        <span class="text-muted">Shipping Fee</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-end">
+                        <span>50 &#8377;</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="text-left">
+                        <span class="text-muted">Tax Fee</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-end">
+                        <span>
+                          {{ orderDetails?.attributes?.tax_amount }}
+                          &#8377;</span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="border-top border-bottom">
+                    <td>
+                      <div class="text-left">
+                        <span class="fw-bold">Total</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-end">
+                        <span class="fw-bold"
+                          >{{
+                            orderDetails?.attributes?.payable_amount 
+                          }}
+                          &#8377;</span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <hr />
+          <div class="text-center">
+            <p class="fw-bold mb-0">Thanks for shopping with us!</p>
+            <a
+              routerLink="/home"
+              class="btn btn-primary cart-btn-transform m-3"
+              data-abc="true"
+              >Home</a
+            >
+            <a
+              routerLink="/my-order"
+              class="btn btn-primary cart-btn-transform m-3"
+              data-abc="true"
+              >Track Order</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

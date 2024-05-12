@@ -1,0 +1,158 @@
+<h1 class="mt-5 mb-5 text-center" style="color: #60ad56">My Profile</h1>
+<div class="container rounded bg-white mt-5 mb-5 d-flex justify-content-center">
+  <div class="row border">
+    <!-- <div class="col-md-5 border-right"> -->
+    <div class="p-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-right">User Information</h4>
+      </div>
+      <form
+        [formGroup]="userForm"
+        class="row mt-3"
+        (ngSubmit)="addUserDetails()"
+      >
+        <div class="col-md-12">
+          <label class="labels">Username</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder=""
+            value="{{ userData.username }}"
+            disabled
+          />
+        </div>
+        <div class="col-md-12 mt-3">
+          <label class="labels">Mobile Number</label>
+          <!-- <div class="d-flex"> -->
+          <input
+            type="text"
+            class="form-control"
+            placeholder=""
+            value="{{ userData.mobile_number }}"
+            formControlName="mobile"
+            *ngIf="userData.mobile_number === null"
+          />
+          <div *ngIf="userData.mobile_number !== null">
+            <input
+              type="text"
+              class="form-control"
+              placeholder=""
+              value="{{ userData.mobile_number }}"
+              disabled
+            />
+          </div>
+
+          <!-- <button class="btn mx-2 editbtn">
+              <i class="bi bi-pencil"></i>
+            </button> -->
+          <!-- </div> -->
+          <span
+            *ngIf="mobile && mobile.invalid && mobile.dirty"
+            style="color: red"
+            class="w-75"
+          >
+            Please Enter Valid Number.. eg 1234567890
+          </span>
+        </div>
+        <div class="col-md-12 mt-3">
+          <label class="labels">Email ID</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder=""
+            value="{{ userData.email }}"
+            disabled
+          />
+        </div>
+        <div class="col-md-12 mt-3">
+          <label
+            class="labels"
+            *ngIf="
+              userData.user_addresses && userData.user_addresses.length > 0
+            "
+            >Address</label
+          >
+
+          <textarea
+            cols="30"
+            rows="3"
+            class="form-control"
+            *ngIf="
+              userData.user_addresses && userData.user_addresses.length > 0
+            "
+            value="{{
+              userData?.user_addresses[0]?.address_line_1 +
+                ' ' +
+                userData?.user_addresses[0]?.landmark +
+                ' ' +
+                userData?.user_addresses[0]?.city?.name +
+                ' ' +
+                userData?.user_addresses[0]?.city?.pincode
+            }}"
+            disabled
+          ></textarea>
+          <!-- add address -->
+          <div
+            *ngIf="
+              !userData.user_addresses || userData.user_addresses.length === 0
+            "
+          >
+            <div class="mb-3">
+              <label for="address_line_1" class="form-label"
+                >Address Line 1:</label
+              >
+              <input
+                type="text"
+                id="address_line_1"
+                name="address_line_1"
+                class="form-control"
+                formControlName="address_line_1"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="landmark" class="form-label">Landmark:</label>
+              <input
+                type="text"
+                id="landmark"
+                name="landmark"
+                class="form-control"
+                required
+                formControlName="landmark"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="city" class="form-label">City:</label>
+
+              <select
+                id="city"
+                name="city"
+                class="form-select"
+                formControlName="city"
+              >
+                <option *ngFor="let city of cityData" [value]="city.id">
+                  {{ city.attributes.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary btn-block mb-4"
+            *ngIf="
+              !userData.user_addresses || userData.user_addresses.length === 0
+            "
+            [disabled]="userForm.invalid"
+          >
+            Save Details
+
+            <span class="spinner-border" role="status" *ngIf="isloading"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>

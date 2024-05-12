@@ -1,0 +1,68 @@
+<nav
+  class="navbar navbar-expand-lg bg-body-tertiary d-flex justify-content-center"
+>
+  <div class="container-fluid test">
+    <a class="navbar-brand fw-bold" routerLink="/home" style="color: #60ad56"
+      >SmartCart</a
+    >
+
+    <div id="navbarSupportedContent" class="w-25">
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center justify-content-evenly w-100"
+      >
+        <li class="nav-item" (click)="handleLogout()">
+          <a class="nav-link active" aria-current="page">Logout</a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/my-order"
+            title="My Orders"
+            [ngClass]="{ 'active-nav-item': activeNavItem === 'my-order' }"
+            ><img src="../../../assets/images/myOrder.svg" alt=""
+          /></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/profile"
+            title="Profile"
+            [ngClass]="{ 'active-nav-item': activeNavItem === 'profile' }"
+            ><i class="bi bi-person"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/wishlist"
+            title="Wishlist"
+            [ngClass]="{ 'active-nav-item': activeNavItem === 'wishlist' }"
+            ><i class="bi bi-heart mx-1"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/cart"
+            title="Cart"
+            [ngClass]="{ 'active-nav-item': activeNavItem === 'cart' }"
+          >
+            <i class="bi bi-cart3">
+              <span
+                class="position-absolute top-4 translate-middle badge rounded-pill bg-danger"
+                *ngIf="getTotalItemsInCart()"
+              >
+                {{ getTotalItemsInCart() }}
+              </span>
+            </i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product_name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "float"
+    },
+    "product_image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "product_description": {
+      "type": "text"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "wish_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wish-list.wish-list",
+      "mappedBy": "product"
+    },
+    "manufacturer_company": {
+      "type": "string"
+    },
+    "manufacture_date": {
+      "type": "datetime"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "expiration_date": {
+      "type": "datetime"
+    },
+    "dimension": {
+      "type": "string"
+    },
+    "carts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cart.cart",
+      "mappedBy": "product"
+    }
+  }
+}

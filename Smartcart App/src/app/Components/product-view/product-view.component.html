@@ -1,0 +1,73 @@
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5">
+      <aside class="col-lg-6">
+        <div
+          class="boxshadow rounded-1 mb-3 d-flex justify-content-center h-100"
+        >
+          <img
+            class="rounded-4 fit img"
+            src="http://localhost:1337{{
+              product.product_image.data[0].attributes.url
+            }}"
+          />
+        </div>
+      </aside>
+
+      <!-- product description -->
+      <main class="col-lg-6 border rounded-4">
+        <div class="p-5">
+          <h4 class="title text-dark">{{ product.product_name }}</h4>
+          <div class="d-flex flex-row my-3">
+            <div class="text-warning mb-1 me-2">
+              <span>Rating : </span>
+              <span class="ms-1"> {{ product.Rating }} </span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <span class="h5"> Price : {{ product.price }} &#8377;</span>
+            <!-- <span class="text-muted">/per box</span> -->
+          </div>
+          <hr />
+          <h5 class="title text-dark">Description</h5>
+
+          <p>{{ product.product_description }}</p>
+          <hr />
+          <div class="row">
+            <dt class="col-3">Weight</dt>
+            <dd class="col-9">{{ product.weight }}</dd>
+
+            <dt class="col-3">Color</dt>
+            <dd class="col-9">{{ product.color }}</dd>
+
+            <dt class="col-3">Dimension</dt>
+            <dd class="col-9">{{ product.dimension }}</dd>
+
+            <dt class="col-3">Manufacturer</dt>
+            <dd class="col-9">
+              {{
+                product.manufacturer_company
+                  ? product.manufacturer_company
+                  : "NA"
+              }}
+            </dd>
+          </div>
+          <hr />
+
+          <div class="row mb-4">
+            <!-- col.// -->
+            <div class="col-md-4 col-6 mb-3"></div>
+          </div>
+          <a routerLink="/home" class="btn btn-primary shadow-0">
+            <i class="me-1 fa fa-shopping-basket"></i> Go Back
+          </a>
+          <a class="btn btn-primary shadow-0 m-2" (click)="addTocard()">
+            <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+            <span class="spinner-border" role="status" *ngIf="isloading"></span>
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>

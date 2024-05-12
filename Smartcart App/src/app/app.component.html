@@ -1,0 +1,4 @@
+<app-navbar *ngIf="pathName != '/' && pathName != '/signup'"></app-navbar>
+<router-outlet></router-outlet>
+<ng-toast></ng-toast>
+<app-footer *ngIf="pathName != '/' && pathName != '/signup'"></app-footer>

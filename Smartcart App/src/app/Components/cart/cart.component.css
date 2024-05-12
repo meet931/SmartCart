@@ -1,0 +1,50 @@
+body {
+  margin-top: 20px;
+  background-color: #f1f3f7;
+}
+
+.avatar-lg {
+  height: 10rem;
+  width: 10rem;
+}
+
+.font-size-18 {
+  font-size: 18px !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none !important;
+  color: white;
+}
+
+.w-xl {
+  min-width: 160px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #eff0f2;
+  border-radius: 5px;
+}
+img {
+  height: 50vh;
+  width: 50vh;
+}
+.quantity {
+  /* border: 1px solid black; */
+  padding: 5px 13px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}

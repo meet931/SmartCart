@@ -1,0 +1,13 @@
+.totals tr td {
+  font-size: 13px;
+}
+.footer {
+  background-color: #eeeeeea8;
+}
+.footer span {
+  font-size: 12px;
+}
+.product-qty span {
+  font-size: 0.9rem;
+  color: rgb(60, 60, 60);
+}
